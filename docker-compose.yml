@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  web:
+    build: ./
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./lib/telegram-auth.lua:/usr/local/openresty/lualib/telegram-auth.lua
+      - ./html/auth.html:/usr/local/openresty/nginx/html/auth.html
+      # - ./:/home/lua-resty-telegram-auth
+      # - ./.opmrc:/root/.opmrc
+    ports:
+      - "80:80"
